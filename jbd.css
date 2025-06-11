@@ -33,4 +33,14 @@
 @keyframes bounce {
     from { transform: translateY(0); }
     to { transform: translateY(-15px); }
+    .cake-cut {
+    animation: cutCake 0.8s ease-in-out forwards;
+}
+
+@keyframes cutCake {
+    0% { transform: rotate(0); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(0); }
+}
+
 }
