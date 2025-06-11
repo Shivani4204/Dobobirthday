@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Dobo! 🎉</title>
+    <title>Happy Birthday Doba! 🎉</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -278,98 +278,62 @@
             <p>🎈 Wishing you a day filled with love, laughter, and lots of cake! 🎉</p>
             <p>May your year ahead be as bright and joyful as you are! ✨</p>
             
-            <div>
-                <button class="btn" id="viewMemoriesBtn">Our Special Memories 💖</button>
-                <button class="btn" id="showPhotosBtn">Show Floating Photos 🖼️</button>
-            </div>
             
-            <button class="btn">Send Dobo a Wish! 💌</button>
+            
+            <button class="btn" id="wishBtn">Send Dobo a Wish! 💌</button>
+
         </div>
     </div>
 
-    <!-- Gallery Modal -->
-    <div id="galleryModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Our Special Memories</h2>
-            <div class="gallery">
-                <img src="https://via.placeholder.com/300?text=Memory1" alt="Memory 1">
-                <img src="https://via.placeholder.com/300?text=Memory2" alt="Memory 2">
-                <img src="https://via.placeholder.com/300?text=Memory3" alt="Memory 3">
-                <img src="https://via.placeholder.com/300?text=Memory4" alt="Memory 4">
-            </div>
-        </div>
-    </div>
 
     <script>
-        // More balloons on click!
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName !== 'BUTTON') {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                balloon.style.left = e.clientX + 'px';
-                balloon.style.bottom = '0';
-                balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
-                document.body.appendChild(balloon);
-                
-                setTimeout(() => {
-                    balloon.remove();
-                }, 10000);
-            }
-        });
+    // More balloons on click
+    document.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'BUTTON') {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = e.clientX + 'px';
+            balloon.style.bottom = '0';
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+            }, 10000);
+        }
+    });
 
-        // Gallery Modal
-        const modal = document.getElementById("galleryModal");
-        const btn = document.getElementById("viewMemoriesBtn");
-        const span = document.getElementsByClassName("close")[0];
-        const showPhotosBtn = document.getElementById("showPhotosBtn");
+    // Toggle floating photos
+    const showPhotosBtn = document.getElementById("showPhotosBtn");
+    let photosVisible = false;
+    showPhotosBtn.onclick = function() {
+        photosVisible = !photosVisible;
+        document.body.classList.toggle('show-photos', photosVisible);
+        showPhotosBtn.textContent = photosVisible ? "Hide Floating Photos 🖼️" : "Show Floating Photos 🖼️";
+    }
 
-        btn.onclick = function() {
-            modal.style.display = "block";
+    // Celebration animation
+    document.getElementById("wishBtn").addEventListener("click", function() {
+        // Confetti burst
+        for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 5000);
         }
 
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+        // Optional sound effect (disabled in GitHub Pages unless hosted with audio file)
+        // const audio = new Audio('your-audio-url.mp3');
+        // audio.play();
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        // Visual pop effect
+        this.style.transform = "scale(1.2)";
+        setTimeout(() => this.style.transform = "scale(1)", 300);
+    });
+</script>
 
-        // Toggle floating photos
-        let photosVisible = false;
-        showPhotosBtn.onclick = function() {
-            photosVisible = !photosVisible;
-            if (photosVisible) {
-                document.body.classList.add('show-photos');
-                showPhotosBtn.textContent = "Hide Floating Photos 🖼️";
-            } else {
-                document.body.classList.remove('show-photos');
-                showPhotosBtn.textContent = "Show Floating Photos 🖼️";
-            }
-        }
-
-        // Replace placeholder images with your actual images
-        const photos = document.querySelectorAll('.floating-photo');
-        const galleryImages = document.querySelectorAll('.gallery img');
-        
-        // Replace these with your actual image URLs
-        const yourImages = [
-            'https://example.com/photo1.jpg',
-            'https://example.com/photo2.jpg',
-            'https://example.com/photo3.jpg',
-            'https://example.com/photo4.jpg'
-        ];
-        
-        // Uncomment and replace with your actual images
-        /*
-        yourImages.forEach((imgUrl, index) => {
-            if (photos[index]) photos[index].src = imgUrl;
-            if (galleryImages[index]) galleryImages[index].src = imgUrl;
-        });
-        */
-    </script>
 </body>
 </html>
