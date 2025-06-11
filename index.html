@@ -321,6 +321,44 @@ document.getElementById("wishBtn").addEventListener("click", function(e) {
         });
 
         setTimeout(() => confetti.remove(), 1500);
+     document.getElementById("wishBtn").addEventListener("click", function() {
+    // Confetti burst
+    for (let i = 0; i < 30; i++) {
+        ...
+    }
+
+    // Optional sound effect (disabled in GitHub Pages unless hosted with audio file)
+    // const audio = new Audio('your-audio-url.mp3');
+    // audio.play();
+
+    // Visual pop effect
+    this.style.transform = "scale(1.2)";
+    setTimeout(() => this.style.transform = "scale(1)", 300);
+});
+document.getElementById("wishBtn").addEventListener("click", function() {
+    // Confetti burst (you can also upgrade this part as per earlier message)
+
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    // 🎂 Cake cutting animation
+    document.querySelector('.cake').classList.add('cake-cut');
+    setTimeout(() => {
+        document.querySelector('.cake').classList.remove('cake-cut');
+    }, 800);
+
+    // Button pop effect
+    this.style.transform = "scale(1.2)";
+    setTimeout(() => this.style.transform = "scale(1)", 300);
+});
+
     }
 
     // Button pop effect
