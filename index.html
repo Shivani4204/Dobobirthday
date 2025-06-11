@@ -1,60 +1,375 @@
 <link rel="stylesheet" href="jbd.css">
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>🎉 Celebrate Dobo’s Birthday!</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dobo! 🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background: url('https://i.pinimg.com/736x/80/e0/2a/80e02a681f87cd393a39141463915ee4.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden;
+            color: #5a3d5c;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(255, 248, 240, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px dashed #ff9eb7;
+            animation: pulseContainer 3s infinite alternate;
+        }
+
+        @keyframes pulseContainer {
+            0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+            100% { transform: scale(1.01); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff6b9d;
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: colorChange 5s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { color: #ff6b9d; }
+            25% { color: #ff9eb7; }
+            50% { color: #a5d8ff; }
+            75% { color: #b5ead7; }
+            100% { color: #ffd166; }
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Balloon Animation */
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            animation: rise 10s linear infinite;
+        }
+
+        .balloon:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 15px;
+            width: 10px;
+            height: 15px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.7;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Button Style */
+        .btn {
+            background-color: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn:hover {
+            background-color: #ff4785;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* Gallery Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            animation: slideDown 0.4s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: #ff6b9d;
+            transform: rotate(90deg);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* Cake Animation */
+        .cake {
+            font-size: 3em;
+            display: inline-block;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        /* Floating Photos */
+        .floating-photo {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: floatPhoto 8s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        @keyframes floatPhoto {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -50px) rotate(5deg); }
+            50% { transform: translate(100px, 0) rotate(0deg); }
+            75% { transform: translate(50px, 50px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .show-photos .floating-photo {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Happy Birthday, Dobo! 🥳</h1>
-    <p>Here’s to another year of joy, love, and adventures.</p>
-    <button class="btn" id="openGallery">View Memories</button>
-  </header>
+    <div class="overlay">
+        <!-- Floating Elements -->
+        <div class="floating-element" style="top: 10%; left: 15%; font-size: 24px;">❤️</div>
+        <div class="floating-element" style="top: 20%; right: 20%; font-size: 24px;">💖</div>
+        <div class="floating-element" style="bottom: 30%; left: 25%; font-size: 24px;">💗</div>
+        
+        <!-- Balloons -->
+        <div class="balloon" style="left: 10%; animation-delay: 0s; background-color: #ff9eb7;"></div>
+        <div class="balloon" style="left: 30%; animation-delay: 2s; background-color: #a5d8ff;"></div>
+        <div class="balloon" style="right: 20%; animation-delay: 4s; background-color: #b5ead7;"></div>
+        
+        <!-- Confetti -->
+        <div class="confetti" style="left: 15%; animation-delay: 1s; background-color: #ff4081;"></div>
+        <div class="confetti" style="left: 50%; animation-delay: 3s; background-color: #ffd166;"></div>
+        <div class="confetti" style="right: 10%; animation-delay: 2s; background-color: #06d6a0;"></div>
 
-  <main class="cards">
-    <section class="card">
-      <div class="icon">🎂</div>
-      <h2>Cake Time</h2>
-      <p>Make a wish and blow out the candles!</p>
-    </section>
-    <section class="card">
-      <div class="icon">🎈</div>
-      <h2>Party Vibes</h2>
-      <p>Let’s fill the room with laughter and good music.</p>
-    </section>
-    <section class="card">
-      <div class="icon">🎁</div>
-      <h2>Gifts & Surprises</h2>
-      <p>Unwrap sweet memories and smiles.</p>
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div id="galleryModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Our Special Moments</h2>
-      <div class="gallery-grid">
-        <!-- Replace src with your real photos -->
-        <img src="https://via.placeholder.com/200?text=Memory+1" alt="Memory 1">
-        <img src="https://via.placeholder.com/200?text=Memory+2" alt="Memory 2">
-        <img src="https://via.placeholder.com/200?text=Memory+3" alt="Memory 3">
-        <img src="https://via.placeholder.com/200?text=Memory+4" alt="Memory 4">
-      </div>
+        <!-- Floating Photos (initially hidden) -->
+        <img src="https://via.placeholder.com/150?text=Photo1" class="floating-photo" style="top: 20%; left: 10%; animation-delay: 0.5s;">
+        <img src="https://via.placeholder.com/150?text=Photo2" class="floating-photo" style="top: 60%; right: 15%; animation-delay: 1s;">
+        <img src="https://via.placeholder.com/150?text=Photo3" class="floating-photo" style="bottom: 20%; left: 20%; animation-delay: 1.5s;">
+        <img src="https://via.placeholder.com/150?text=Photo4" class="floating-photo" style="top: 30%; right: 5%; animation-delay: 2s;">
+        
+        <!-- Main Content -->
+        <div class="container">
+            <h1>Happy Birthday Dobo! <span class="cake">🎂</span></h1>
+            <p>🎈 Wishing you a day filled with love, laughter, and lots of cake! 🎉</p>
+            <p>May your year ahead be as bright and joyful as you are! ✨</p>
+            
+            <div>
+                <button class="btn" id="viewMemoriesBtn">Our Special Memories 💖</button>
+                <button class="btn" id="showPhotosBtn">Show Floating Photos 🖼️</button>
+            </div>
+            
+            <button class="btn">Send Dobo a Wish! 💌</button>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // Modal logic
-    const modal = document.getElementById('galleryModal');
-    document.getElementById('openGallery').onclick = () => modal.classList.add('visible');
-    modal.querySelector('.close').onclick = () => modal.classList.remove('visible');
-    window.onclick = e => { if (e.target === modal) modal.classList.remove('visible'); };
-  </script>
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Our Special Memories</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/300?text=Memory1" alt="Memory 1">
+                <img src="https://via.placeholder.com/300?text=Memory2" alt="Memory 2">
+                <img src="https://via.placeholder.com/300?text=Memory3" alt="Memory 3">
+                <img src="https://via.placeholder.com/300?text=Memory4" alt="Memory 4">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // More balloons on click!
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON') {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = e.clientX + 'px';
+                balloon.style.bottom = '0';
+                balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+                document.body.appendChild(balloon);
+                
+                setTimeout(() => {
+                    balloon.remove();
+                }, 10000);
+            }
+        });
+
+        // Gallery Modal
+        const modal = document.getElementById("galleryModal");
+        const btn = document.getElementById("viewMemoriesBtn");
+        const span = document.getElementsByClassName("close")[0];
+        const showPhotosBtn = document.getElementById("showPhotosBtn");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Toggle floating photos
+        let photosVisible = false;
+        showPhotosBtn.onclick = function() {
+            photosVisible = !photosVisible;
+            if (photosVisible) {
+                document.body.classList.add('show-photos');
+                showPhotosBtn.textContent = "Hide Floating Photos 🖼️";
+            } else {
+                document.body.classList.remove('show-photos');
+                showPhotosBtn.textContent = "Show Floating Photos 🖼️";
+            }
+        }
+
+        // Replace placeholder images with your actual images
+        const photos = document.querySelectorAll('.floating-photo');
+        const galleryImages = document.querySelectorAll('.gallery img');
+        
+        // Replace these with your actual image URLs
+        const yourImages = [
+            'https://example.com/photo1.jpg',
+            'https://example.com/photo2.jpg',
+            'https://example.com/photo3.jpg',
+            'https://example.com/photo4.jpg'
+        ];
+        
+        // Uncomment and replace with your actual images
+        /*
+        yourImages.forEach((imgUrl, index) => {
+            if (photos[index]) photos[index].src = imgUrl;
+            if (galleryImages[index]) galleryImages[index].src = imgUrl;
+        });
+        */
+    </script>
 </body>
 </html>
