@@ -1,0 +1,122 @@
+/* Base Reset & Vars */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --primary: #ff7979;
+  --secondary: #ffd56b;
+  --bg-light: #fff8f0;
+  --text-dark: #333;
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.btn {
+  background: white;
+  color: var(--primary);
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn:hover {
+  background: #ffe5c1;
+  transform: translateY(-3px);
+}
+
+/* Card Layout */
+.cards {
+  display: grid;
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.modal.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-content {
+  background: white;
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 5% auto;
+  padding: 1.5rem;
+  position: relative;
+}
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.gallery-grid img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
