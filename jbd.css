@@ -1,10 +1,11 @@
-/* Cake Animation */
+/* Cake Animation with Hover Cut Effect */
 .cake {
     font-size: 3em;
     display: inline-block;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
     position: relative;
+    animation: bounce 1s infinite alternate;
 }
 
 .cake::after {
@@ -27,4 +28,9 @@
 
 .cake:hover::after {
     transform: translateX(-50%) scaleY(1);
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
 }
