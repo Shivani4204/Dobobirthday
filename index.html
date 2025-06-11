@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>🎉 Celebrate Dobo’s Birthday!</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <h1>Happy Birthday, Dobo! 🥳</h1>
+    <p>Here’s to another year of joy, love, and adventures.</p>
+    <button class="btn" id="openGallery">View Memories</button>
+  </header>
+
+  <main class="cards">
+    <section class="card">
+      <div class="icon">🎂</div>
+      <h2>Cake Time</h2>
+      <p>Make a wish and blow out the candles!</p>
+    </section>
+    <section class="card">
+      <div class="icon">🎈</div>
+      <h2>Party Vibes</h2>
+      <p>Let’s fill the room with laughter and good music.</p>
+    </section>
+    <section class="card">
+      <div class="icon">🎁</div>
+      <h2>Gifts & Surprises</h2>
+      <p>Unwrap sweet memories and smiles.</p>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="galleryModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Our Special Moments</h2>
+      <div class="gallery-grid">
+        <!-- Replace src with your real photos -->
+        <img src="https://via.placeholder.com/200?text=Memory+1" alt="Memory 1">
+        <img src="https://via.placeholder.com/200?text=Memory+2" alt="Memory 2">
+        <img src="https://via.placeholder.com/200?text=Memory+3" alt="Memory 3">
+        <img src="https://via.placeholder.com/200?text=Memory+4" alt="Memory 4">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic
+    const modal = document.getElementById('galleryModal');
+    document.getElementById('openGallery').onclick = () => modal.classList.add('visible');
+    modal.querySelector('.close').onclick = () => modal.classList.remove('visible');
+    window.onclick = e => { if (e.target === modal) modal.classList.remove('visible'); };
+  </script>
+</body>
+</html>
